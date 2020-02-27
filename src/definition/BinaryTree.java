@@ -12,11 +12,30 @@ import adt.BinaryTreeADT;
 public class BinaryTree<E> implements BinaryTreeADT<E> {
 
     private Node<E> root;
+    private int noOfNodes=0;
 
-    @Override
     public boolean add(E data) {
-        return false;
+        root=addRecursive(root,data);
+        noOfNodes++;
+        return true;
     }
+
+    private Node<E> addRecursive(Node<E> croot, E data) {
+        if(croot==null)
+        {
+            return new Node<E>(data);
+        }
+        if((Integer) data <(Integer) croot.getData()){
+            croot.leftChild=addRecursive(croot.getLeftChild(),data);
+        }
+        else    if((Integer) data > (Integer) croot.getData())
+        {
+            croot.rightChild=addRecursive(croot.rightChild,data);
+        }
+        return croot;
+
+    }
+
 
     private static class Node<E> {
         private E data;
