@@ -39,6 +39,20 @@ public class BinaryTree<E> implements BinaryTreeADT<E> {
         return root == null;
     }
 
+    public void traversePreOrder(Node<E> currentNode) {
+        if (currentNode != null) {
+            visit(currentNode.getData());
+            traversePreOrder(currentNode.getLeftChild());
+            traversePreOrder(currentNode.getRightChild());
+        }
+    }
+
+    public void visit(E data) {
+        System.out.println(" " + data);
+
+
+    }
+
 
     private static class Node<E> {
         private E data;
