@@ -47,6 +47,14 @@ public class BinaryTree<E> implements BinaryTreeADT<E> {
         }
     }
 
+    public void traversePostOrder(Node<E> currentNode) {
+        if (currentNode != null) {
+            traversePostOrder(currentNode.getLeftChild());
+            traversePostOrder(currentNode.getRightChild());
+            visit(currentNode.getData());
+        }
+    }
+
     public void visit(E data) {
         System.out.println(" " + data);
 
