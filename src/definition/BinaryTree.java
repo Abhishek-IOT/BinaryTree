@@ -20,19 +20,18 @@ public class BinaryTree<E> implements BinaryTreeADT<E> {
         return true;
     }
 
-    private Node<E> addRecursive(Node<E> croot, E data) {
-        if(croot==null)
+    private Node<E> addRecursive(Node<E> currentroot, E data) {
+        if (currentroot == null)
         {
             return new Node<E>(data);
         }
-        if((Integer) data <(Integer) croot.getData()){
-            croot.leftChild=addRecursive(croot.getLeftChild(),data);
-        }
-        else    if((Integer) data > (Integer) croot.getData())
+        if ((Integer) data < (Integer) currentroot.getData()) {
+            currentroot.leftChild = addRecursive(currentroot.getLeftChild(), data);
+        } else if ((Integer) data > (Integer) currentroot.getData())
         {
-            croot.rightChild=addRecursive(croot.rightChild,data);
+            currentroot.rightChild = addRecursive(currentroot.rightChild, data);
         }
-        return croot;
+        return currentroot;
 
     }
 
