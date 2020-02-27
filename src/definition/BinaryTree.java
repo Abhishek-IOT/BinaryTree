@@ -12,23 +12,21 @@ import adt.BinaryTreeADT;
 public class BinaryTree<E> implements BinaryTreeADT<E> {
 
     private Node<E> root;
-    private int noOfNodes=0;
+    private int noOfNodes = 0;
 
     public boolean add(E data) {
-        root=addRecursive(root,data);
+        root = addRecursive(root, data);
         noOfNodes++;
         return true;
     }
 
     private Node<E> addRecursive(Node<E> currentroot, E data) {
-        if (currentroot == null)
-        {
+        if (currentroot == null) {
             return new Node<E>(data);
         }
         if ((Integer) data < (Integer) currentroot.getData()) {
             currentroot.leftChild = addRecursive(currentroot.getLeftChild(), data);
-        } else if ((Integer) data > (Integer) currentroot.getData())
-        {
+        } else if ((Integer) data > (Integer) currentroot.getData()) {
             currentroot.rightChild = addRecursive(currentroot.rightChild, data);
         }
         return currentroot;
@@ -73,6 +71,15 @@ public class BinaryTree<E> implements BinaryTreeADT<E> {
 
     }
 
+    public boolean containsNodeRecursive(Node<E> currentNode, E data) {
+        if (currentNode == null) {
+            return false;
+        }
+        if (data.equals(currentNode.getData())) {
+            return true;
+        }
+        return (Integer) data < (Integer) currentNode.getData() ? containsNodeRecursive(currentNode.getLeftChild(), data) : containsNodeRecursive(currentNode.getRightChild(), data);
+    }
 
     private static class Node<E> {
         private E data;
