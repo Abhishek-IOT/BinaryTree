@@ -35,6 +35,10 @@ public class BinaryTree<E> implements BinaryTreeADT<E> {
 
     }
 
+    public boolean isEmpty() {
+        return root == null;
+    }
+
 
     private static class Node<E> {
         private E data;
